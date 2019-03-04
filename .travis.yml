@@ -11,6 +11,15 @@ env:
 
 if: (branch = staging OR branch = trying OR branch = master) OR (type = pull_request AND branch = master)
 
+
+matrix:
+  exclude:
+    - rust: stable
+      TARGET=riscv64imac-unknown-none-elf
+    - rust: 1.31.0 # MSRV
+      TARGET=riscv64imac-unknown-none-elf
+
+
 before_install: set -e
 
 install:
